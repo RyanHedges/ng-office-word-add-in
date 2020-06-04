@@ -25,7 +25,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@microsoft/office-js/dist",
+                "output": "/assets/office-js/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -66,7 +71,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "testoffice:build"
+            "browserTarget": "testoffice:build",
+            "ssl": true,
+            "sslCert": "~/.office-addin-dev-certs/localhost.crt",
+            "sslKey": "~/.office-addin-dev-certs/localhost.key"
           },
           "configurations": {
             "production": {
